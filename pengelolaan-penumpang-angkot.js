@@ -1,34 +1,42 @@
 var penumpang = [];
 
-var tambahPenumpang = function (x, y) {
+var penumpangNaik = function (x, y) {
 
     if (y.includes(x)) {
         console.log(y.join(" || "));
         console.log(x + " sudah ada di dalam angkot")
+        return penumpang;
     }
 
     else {
         if (y.includes(undefined)) {
             y[y.indexOf(undefined)] = x;
+            return penumpang;
         }
-
         else {
             y.push(x);
+            return penumpang;
         }
-
-        console.log(y.join(" || "));
     }
-
 }
 
-tambahPenumpang("gema", penumpang);
-tambahPenumpang("dodi", penumpang);
-tambahPenumpang("bani", penumpang);
-tambahPenumpang("santi", penumpang);
-penumpang[0] = undefined;
-penumpang[1] = undefined;
-tambahPenumpang("nadia", penumpang);
-tambahPenumpang("rama", penumpang);
-tambahPenumpang("rama", penumpang);
+var penumpangTurun = function (x, y) {
+    if (y.length == 0) {
+        console.log("angkot kosong");
+        return y;
+    }
 
+    else {
+        for (var i = 0; i < y.length; i++) {
+            if (y[i] == x) {
+                y[i] = undefined;
+                return y;
+            }
 
+            else {
+                console.log("penumpang" + " " + x + " " + "ga ada di angkot");
+                return y;
+            }
+        }
+    }
+}
